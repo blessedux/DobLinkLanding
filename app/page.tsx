@@ -13,10 +13,10 @@ export default function Home() {
           {/* Hero Section */}
           <div className="mx-auto max-w-4xl text-center space-y-8">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-gray-900">
-              Dob Link: Your Gateway to DePIN
+              Your Gateway to Tokenized Infrastructure
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              Seamlessly integrate verified DePIN tokens into any platform. Built on DOB Protocol, verified by TRUFA - the trusted standard for DAM token validation.
+              Seamlessly tokenize and finance your infrastructure assets. Built on DOB Protocol, verified by TRUFA - the trusted standard for infrastructure token validation.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
