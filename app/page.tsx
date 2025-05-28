@@ -13,7 +13,7 @@ export default function Home() {
           {/* Hero Section */}
           <div className="mx-auto max-w-4xl text-center space-y-8">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-gray-900">
-              Your Gateway to Tokenized Infrastructure
+              Dob Link: Your Gateway to Tokenized Infrastructure
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
               Seamlessly tokenize and finance your infrastructure assets. Built on DOB Protocol, verified by TRUFA - the trusted standard for infrastructure token validation.
