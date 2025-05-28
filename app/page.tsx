@@ -22,7 +22,7 @@ export default function Home() {
               <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
                 Start Integrating <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white">
+              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white bg-white">
                 View Documentation
               </Button>
             </div>
@@ -32,7 +32,7 @@ export default function Home() {
           <div className="mx-auto max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold tracking-tight">Seamless Token Sales</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Seamless Token Sales</h2>
                 <p className="text-gray-600">
                   Our embeddable widget enables you to offer your machine tokens directly to your clients. A complete solution for tokenizing your infrastructure and managing sales.
                 </p>
@@ -66,7 +66,7 @@ export default function Home() {
           {/* Value Proposition */}
           <div id="features" className="space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">Why Choose Our Solution?</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Why Choose Our Solution?</h2>
               <p className="mx-auto max-w-2xl text-gray-600">
                 Transform your infrastructure into tokenized assets and offer them directly to your clients
               </p>
@@ -111,7 +111,7 @@ export default function Home() {
           {/* How It Works */}
           <div id="how-it-works" className="space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">How It Works</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">How It Works</h2>
               <p className="mx-auto max-w-2xl text-gray-600">
                 A simple process to tokenize your machines and start selling to your clients
               </p>
@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="mx-auto rounded-full bg-gray-100 p-4 w-16 h-16 flex items-center justify-center">
                   <span className="text-2xl font-bold">1</span>
                 </div>
-                <h3 className="text-xl font-bold">Tokenize</h3>
+                <h3 className="text-xl font-bold text-gray-900">Tokenize</h3>
                 <p className="text-gray-600">
                   Convert your machines into verified tokens through the DOB Protocol.
                 </p>
@@ -130,7 +130,7 @@ export default function Home() {
                 <div className="mx-auto rounded-full bg-gray-100 p-4 w-16 h-16 flex items-center justify-center">
                   <span className="text-2xl font-bold">2</span>
                 </div>
-                <h3 className="text-xl font-bold">Integrate</h3>
+                <h3 className="text-xl font-bold text-gray-900">Integrate</h3>
                 <p className="text-gray-600">
                   Add our widget to your platform to display and sell your tokens.
                 </p>
@@ -139,7 +139,7 @@ export default function Home() {
                 <div className="mx-auto rounded-full bg-gray-100 p-4 w-16 h-16 flex items-center justify-center">
                   <span className="text-2xl font-bold">3</span>
                 </div>
-                <h3 className="text-xl font-bold">Sell</h3>
+                <h3 className="text-xl font-bold text-gray-900">Sell</h3>
                 <p className="text-gray-600">
                   Start offering your tokens directly to your clients through your platform.
                 </p>
@@ -150,7 +150,7 @@ export default function Home() {
           {/* Developer Section */}
           <div id="developers" className="mx-auto max-w-4xl space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">For Platform Owners</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">For Platform Owners</h2>
               <p className="mx-auto max-w-2xl text-gray-600">Start selling your machine tokens to clients with minimal integration effort</p>
             </div>
             <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
@@ -176,7 +176,7 @@ export default function Home() {
 
           {/* CTA Section */}
           <div className="mx-auto max-w-4xl text-center space-y-8 bg-gray-50 p-12 rounded-2xl">
-            <h2 className="text-3xl font-bold tracking-tight">Ready to Tokenize Your Machines?</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Ready to Tokenize Your Machines?</h2>
             <p className="mx-auto max-w-2xl text-gray-600">
               Join the future of machine tokenization. Start offering your tokens to clients through our seamless integration.
             </p>
@@ -184,7 +184,7 @@ export default function Home() {
               <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
                 Get Started <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white">
+              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white bg-white">
                 Contact Sales
               </Button>
             </div>

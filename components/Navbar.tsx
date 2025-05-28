@@ -95,7 +95,7 @@ const Navbar = () => {
             style={{
               backdropFilter: `blur(${blurAmount}px)`,
               backgroundColor: isScrolled 
-                ? theme === 'dark' ? 'rgba(17, 24, 39, 0.8)' : 'rgba(255, 255, 255, 0.8)' 
+                ? theme === 'dark' ? 'rgba(17, 24, 39, 0.8)' : 'rgba(255, 255, 255, 0.7)' 
                 : 'transparent',
               boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' : 'none',
               transition: `backdrop-filter 0.5s ease-in-out, 
