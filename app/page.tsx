@@ -19,10 +19,10 @@ export default function Home() {
               Seamlessly integrate verified DePIN tokens into any platform. Built on DOB Protocol, verified by TRUFA - the trusted standard for DAM token validation.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="gap-2">
+              <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
                 Start Integrating <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white">
                 View Documentation
               </Button>
             </div>
@@ -181,10 +181,10 @@ export default function Home() {
               Join the future of machine tokenization. Start offering your tokens to clients through our seamless integration.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="gap-2">
+              <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
                 Get Started <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white">
                 Contact Sales
               </Button>
             </div>
