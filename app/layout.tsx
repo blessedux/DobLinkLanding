@@ -1,20 +1,23 @@
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/context/ThemeContext"
+import Navbar from "@/components/Navbar"
+import { ReactNode } from "react"
+import type { Metadata } from "next"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: "DOB Protocol - Embeddable Payment Processor for DePIN Revenue Tokens",
-  description: "The universal gateway to DePIN revenue tokens. Embed a seamless payment processor anywhere.",
-    generator: 'v0.dev'
+export const metadata: Metadata = {
+  title: "Dob Link - Your Gateway to DePIN",
+  description: "Seamlessly integrate verified DePIN tokens into any platform. Built on DOB Protocol, verified by TRUFA.",
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider>
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
