@@ -61,14 +61,12 @@ export default function EmbeddableDemo() {
               Connected
             </div>
           ) : (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="text-sm border-[#B6C5F5] text-[#597CE9] hover:bg-[#597CE9] hover:text-white transition-colors"
+            <button
               onClick={handleConnect}
+              className="w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              <Wallet className="h-3 w-3 mr-1" /> Connect
-            </Button>
+              Connect Wallet
+            </button>
           )}
         </div>
 
