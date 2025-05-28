@@ -12,7 +12,7 @@ export default function Home() {
         <section className="container mx-auto px-4 py-24 md:py-32 space-y-24">
           {/* Hero Section */}
           <div className="mx-auto max-w-4xl text-center space-y-8">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-gray-900">
               Dob Link: Your Gateway to DePIN
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
@@ -72,34 +72,34 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card>
+              <Card className="bg-white border-gray-200">
                 <CardContent className="pt-6 space-y-4">
                   <div className="rounded-full bg-blue-100 p-3 w-fit">
                     <Code className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-bold">Easy Integration</h3>
+                  <h3 className="text-xl font-bold text-gray-900">Easy Integration</h3>
                   <p className="text-gray-600">
                     Add our widget to your platform with minimal code. Start selling your machine tokens to clients immediately.
                   </p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="bg-white border-gray-200">
                 <CardContent className="pt-6 space-y-4">
                   <div className="rounded-full bg-purple-100 p-3 w-fit">
                     <Globe className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold">Complete Control</h3>
+                  <h3 className="text-xl font-bold text-gray-900">Complete Control</h3>
                   <p className="text-gray-600">
                     Maintain full control over your token sales while providing a seamless experience for your clients.
                   </p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="bg-white border-gray-200">
                 <CardContent className="pt-6 space-y-4">
                   <div className="rounded-full bg-green-100 p-3 w-fit">
                     <Lock className="h-6 w-6 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold">Verified Assets</h3>
+                  <h3 className="text-xl font-bold text-gray-900">Verified Assets</h3>
                   <p className="text-gray-600">
                     All machine tokens are verified and secured through the DOB Protocol, ensuring trust and reliability.
                   </p>
