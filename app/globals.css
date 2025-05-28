@@ -28,6 +28,7 @@ html, body, #__next, main {
   padding: 0;
   overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
 }
 
 /* Reset any default margins/paddings on all elements */
@@ -40,6 +41,7 @@ html, body, #__next, main {
 body {
   min-height: 100vh;
   display: block; /* Prevent any flex behavior on body */
+  background-color: white;
 }
 
 /* Remove top spacing specifically */
@@ -142,5 +144,6 @@ main > div {
   }
   body {
     @apply bg-background text-foreground;
+    background-color: white;
   }
 }
