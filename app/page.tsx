@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { ArrowRight, Code, Coins, Globe, Lock, Zap } from "lucide-react"
+import Link from "next/link";
+import { ArrowRight, Code, Coins, Globe, Lock, Zap } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import EmbeddableDemo from "@/components/embeddable-demo"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import EmbeddableDemo from "@/components/embeddable-demo";
 
 export default function Home() {
   return (
@@ -16,13 +16,22 @@ export default function Home() {
               Dob Link: Your Gateway to Tokenized Infrastructure
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              Seamlessly tokenize and finance your infrastructure assets. Built on DOB Protocol, verified by TRUFA - the trusted standard for infrastructure token validation.
+              Seamlessly tokenize and finance your infrastructure assets. Built
+              on DOB Protocol, verified by TRUFA - the trusted standard for
+              infrastructure token validation.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
+              <Button
+                size="lg"
+                className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white"
+              >
                 Start Integrating <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white bg-white">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-black text-black hover:bg-black hover:text-white bg-white"
+              >
                 View Documentation
               </Button>
             </div>
@@ -32,9 +41,13 @@ export default function Home() {
           <div className="mx-auto max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Seamless Token Sales</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+                  Seamless Token Sales
+                </h2>
                 <p className="text-gray-600">
-                  Our embeddable widget enables you to offer your machine tokens directly to your clients. A complete solution for tokenizing your infrastructure and managing sales.
+                  Our embeddable widget enables you to offer your machine tokens
+                  directly to your clients. A complete solution for tokenizing
+                  your infrastructure and managing sales.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
@@ -66,9 +79,12 @@ export default function Home() {
           {/* Value Proposition */}
           <div id="features" className="space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Why Choose Our Solution?</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+                Why Choose Our Solution?
+              </h2>
               <p className="mx-auto max-w-2xl text-gray-600">
-                Transform your infrastructure into tokenized assets and offer them directly to your clients
+                Transform your infrastructure into tokenized assets and offer
+                them directly to your clients
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -77,9 +93,12 @@ export default function Home() {
                   <div className="rounded-full bg-blue-100 p-3 w-fit">
                     <Code className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Easy Integration</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Easy Integration
+                  </h3>
                   <p className="text-gray-600">
-                    Add our widget to your platform with minimal code. Start selling your machine tokens to clients immediately.
+                    Add our widget to your platform with minimal code. Start
+                    selling your machine tokens to clients immediately.
                   </p>
                 </CardContent>
               </Card>
@@ -88,9 +107,12 @@ export default function Home() {
                   <div className="rounded-full bg-purple-100 p-3 w-fit">
                     <Globe className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Complete Control</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Complete Control
+                  </h3>
                   <p className="text-gray-600">
-                    Maintain full control over your token sales while providing a seamless experience for your clients.
+                    Maintain full control over your token sales while providing
+                    a seamless experience for your clients.
                   </p>
                 </CardContent>
               </Card>
@@ -99,9 +121,12 @@ export default function Home() {
                   <div className="rounded-full bg-green-100 p-3 w-fit">
                     <Lock className="h-6 w-6 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Verified Assets</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Verified Assets
+                  </h3>
                   <p className="text-gray-600">
-                    All machine tokens are verified and secured through the DOB Protocol, ensuring trust and reliability.
+                    All machine tokens are verified and secured through the DOB
+                    Protocol, ensuring trust and reliability.
                   </p>
                 </CardContent>
               </Card>
@@ -111,9 +136,12 @@ export default function Home() {
           {/* How It Works */}
           <div id="how-it-works" className="space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">How It Works</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+                How It Works
+              </h2>
               <p className="mx-auto max-w-2xl text-gray-600">
-                A simple process to tokenize your machines and start selling to your clients
+                A simple process to tokenize your machines and start selling to
+                your clients
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -123,7 +151,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Tokenize</h3>
                 <p className="text-gray-600">
-                  Convert your machines into verified tokens through the DOB Protocol.
+                  Convert your machines into verified tokens through the DOB
+                  Protocol.
                 </p>
               </div>
               <div className="text-center space-y-4">
@@ -132,7 +161,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Integrate</h3>
                 <p className="text-gray-600">
-                  Add our widget to your platform to display and sell your tokens.
+                  Add our widget to your platform to display and sell your
+                  tokens.
                 </p>
               </div>
               <div className="text-center space-y-4">
@@ -141,7 +171,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Sell</h3>
                 <p className="text-gray-600">
-                  Start offering your tokens directly to your clients through your platform.
+                  Start offering your tokens directly to your clients through
+                  your platform.
                 </p>
               </div>
             </div>
@@ -150,8 +181,13 @@ export default function Home() {
           {/* Developer Section */}
           <div id="developers" className="mx-auto max-w-4xl space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">For Platform Owners</h2>
-              <p className="mx-auto max-w-2xl text-gray-600">Start selling your machine tokens to clients with minimal integration effort</p>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+                For Platform Owners
+              </h2>
+              <p className="mx-auto max-w-2xl text-gray-600">
+                Start selling your machine tokens to clients with minimal
+                integration effort
+              </p>
             </div>
             <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
               <pre className="text-sm">
@@ -176,15 +212,25 @@ export default function Home() {
 
           {/* CTA Section */}
           <div className="mx-auto max-w-4xl text-center space-y-8 bg-gray-50 p-12 rounded-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Ready to Tokenize Your Machines?</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+              Ready to Tokenize Your Machines?
+            </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Join the future of machine tokenization. Start offering your tokens to clients through our seamless integration.
+              Join the future of machine tokenization. Start offering your
+              tokens to clients through our seamless integration.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white">
+              <Button
+                size="lg"
+                className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white"
+              >
                 Get Started <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white bg-white">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-black text-black hover:bg-black hover:text-white bg-white"
+              >
                 Contact Sales
               </Button>
             </div>
@@ -192,5 +238,5 @@ export default function Home() {
         </section>
       </main>
     </div>
-  )
+  );
 }

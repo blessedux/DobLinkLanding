@@ -123,7 +123,7 @@ export default function EmbeddableDemo() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-3xl mx-auto relative z-10">
       <div
         className={`swap-container rounded-2xl bg-white/70 border border-[#E3EAFD] shadow-lg p-8 relative transition-all duration-500 ease-out ${showInvestmentFlow ? "transform scale-[1.02]" : "transform scale-100"}`}
         style={{ boxShadow: "0 4px 24px 0 rgba(80, 112, 255, 0.08)" }}
@@ -132,7 +132,7 @@ export default function EmbeddableDemo() {
           {/* Left column: Invest in, Amount */}
           <div className="flex flex-col gap-8">
             {/* Invest in */}
-            <div className="bg-white rounded-xl border border-[#E3EAFD] p-6 relative z-20">
+            <div className="bg-white rounded-xl border border-[#E3EAFD] p-6 relative">
               <div className="text-gray-700 text-base font-medium mb-4">
                 Invest in
               </div>
@@ -159,42 +159,48 @@ export default function EmbeddableDemo() {
 
                 {/* Dropdown Menu */}
                 {isDropdownOpen && (
-                  <div
-                    className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-[100] overflow-hidden transition-all duration-150 ease-out animate-in fade-in slide-in-from-top-2"
-                    style={{
-                      boxShadow:
-                        "0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 20px rgba(89, 124, 233, 0.1)",
-                    }}
-                  >
-                    {TOKENS.map((token) => (
-                      <button
-                        key={token.symbol}
-                        onClick={() => {
-                          setSelectedToken(token);
-                          setIsDropdownOpen(false);
-                        }}
-                        className={`w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-gray-50 transition-colors ${
-                          selectedToken.symbol === token.symbol
-                            ? "bg-blue-50 border-l-4 border-[#597CE9]"
-                            : ""
-                        }`}
-                      >
-                        <img
-                          src={token.logo}
-                          alt={token.name}
-                          className="w-5 h-5 rounded-full"
-                        />
-                        <div className="flex flex-col">
-                          <span className="text-gray-700 font-medium">
-                            {token.name}
-                          </span>
-                          <span className="text-sm text-gray-500">
-                            {token.apy}% APY
-                          </span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
+                  <>
+                    <div
+                      className="fixed inset-0 z-10"
+                      onClick={() => setIsDropdownOpen(false)}
+                    />
+                    <div
+                      className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-50 overflow-hidden transition-all duration-150 ease-out animate-in fade-in slide-in-from-top-2"
+                      style={{
+                        boxShadow:
+                          "0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 20px rgba(89, 124, 233, 0.1)",
+                      }}
+                    >
+                      {TOKENS.map((token) => (
+                        <button
+                          key={token.symbol}
+                          onClick={() => {
+                            setSelectedToken(token);
+                            setIsDropdownOpen(false);
+                          }}
+                          className={`w-full px-4 py-3 text-left flex items-center gap-3 hover:bg-gray-50 transition-colors ${
+                            selectedToken.symbol === token.symbol
+                              ? "bg-blue-50 border-l-4 border-[#597CE9]"
+                              : ""
+                          }`}
+                        >
+                          <img
+                            src={token.logo}
+                            alt={token.name}
+                            className="w-5 h-5 rounded-full"
+                          />
+                          <div className="flex flex-col">
+                            <span className="text-gray-700 font-medium">
+                              {token.name}
+                            </span>
+                            <span className="text-sm text-gray-500">
+                              {token.apy}% APY
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
             </div>
@@ -268,7 +274,7 @@ export default function EmbeddableDemo() {
                   </span>
                   {/* EHive Info Tooltip */}
                   {showLogoTooltip && selectedToken.symbol === "EHIVE" && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-30 transition-all duration-300 ease-out animate-in fade-in slide-in-from-bottom-2">
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-40 transition-all duration-300 ease-out">
                       <div className="text-sm">
                         <div className="font-semibold text-gray-800 mb-2">
                           E-Hive EV Charger Network
@@ -343,7 +349,7 @@ export default function EmbeddableDemo() {
                     </span>
                     {/* APY Tooltip */}
                     {showAPYTooltip && (
-                      <div className="absolute bottom-full right-0 mb-2 w-72 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-30 transition-all duration-150 ease-out">
+                      <div className="absolute bottom-full right-0 mb-2 w-72 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-40 transition-all duration-150 ease-out">
                         <div className="text-sm">
                           <div className="font-semibold text-gray-800 mb-2">
                             Annual Percentage Yield (APY)
