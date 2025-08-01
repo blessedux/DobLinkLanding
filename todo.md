@@ -38,17 +38,17 @@ Stack: Next.js + React + Tailwind
 
 ## UI and Visual Enhancements
 
-- [X] Add minimalist animated background behind main content
-- [X] Ensure animation is lightweight and non-distracting
+- [ ] Add minimalist animated background behind main content
+- [ ] Ensure animation is lightweight and non-distracting
 
 ---
 
 ## QA and Testing
 
-- [ ] Test tooltip hover behavior for API and EHive logo
-- [ ] Test layout responsiveness across mobile, tablet, and desktop
+- [X] Test tooltip hover behavior for API and EHive logo
+- [X] Test layout responsiveness across mobile, tablet, and desktop
 - [ ] Ensure background animation doesn’t affect performance
-- [ ] Validate all visual and layout changes against design spec
+- [X] Validate all visual and layout changes against design spec
 
 ---
 
