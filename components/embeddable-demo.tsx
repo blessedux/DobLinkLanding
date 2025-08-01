@@ -39,7 +39,11 @@ export default function EmbeddableDemo() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showAPYTooltip, setShowAPYTooltip] = useState(false);
   const [showLogoTooltip, setShowLogoTooltip] = useState(false);
+  const [investmentStep, setInvestmentStep] = useState(0);
+  const [showInvestmentFlow, setShowInvestmentFlow] = useState(false);
+  const [isFlowFadingOut, setIsFlowFadingOut] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleConnect = () => {
     setConnected(true);
@@ -62,24 +66,66 @@ export default function EmbeddableDemo() {
     };
   }, []);
 
+  // Cleanup tooltip timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (tooltipTimeoutRef.current) {
+        clearTimeout(tooltipTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleInvest = () => {
     if (!connected) {
       setConnected(true);
       return;
     }
 
+    setShowInvestmentFlow(true);
+    setInvestmentStep(1);
     setInvesting(true);
+
+    // Step 1: Wallet Connection Verification
+    setTimeout(() => {
+      setInvestmentStep(2);
+    }, 1000);
+
+    // Step 2: Transaction Preparation
+    setTimeout(() => {
+      setInvestmentStep(3);
+    }, 2500);
+
+    // Step 3: Smart Contract Interaction
+    setTimeout(() => {
+      setInvestmentStep(4);
+    }, 4000);
+
+    // Step 4: Token Allocation
+    setTimeout(() => {
+      setInvestmentStep(5);
+    }, 5500);
+
+    // Step 5: Success & Confirmation
     setTimeout(() => {
       setInvesting(false);
       setSuccess(true);
-      setTimeout(() => setSuccess(false), 3000);
-    }, 1500);
+      setInvestmentStep(6);
+      setTimeout(() => {
+        setSuccess(false);
+        setIsFlowFadingOut(true);
+        setTimeout(() => {
+          setShowInvestmentFlow(false);
+          setInvestmentStep(0);
+          setIsFlowFadingOut(false);
+        }, 800);
+      }, 4000);
+    }, 7000);
   };
 
   return (
     <div className="w-full max-w-3xl mx-auto">
       <div
-        className="swap-container rounded-2xl bg-white/70 border border-[#E3EAFD] shadow-lg p-8 relative"
+        className={`swap-container rounded-2xl bg-white/70 border border-[#E3EAFD] shadow-lg p-8 relative transition-all duration-500 ease-out ${showInvestmentFlow ? "transform scale-[1.02]" : "transform scale-100"}`}
         style={{ boxShadow: "0 4px 24px 0 rgba(80, 112, 255, 0.08)" }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -180,19 +226,49 @@ export default function EmbeddableDemo() {
             <div className="bg-white rounded-xl border border-[#E3EAFD] p-6 flex flex-col gap-4 h-full justify-between">
               {/* Asset info */}
               <div className="flex items-center gap-2 mb-2">
+                <img
+                  src={selectedToken.logo}
+                  alt={selectedToken.name}
+                  className="w-6 h-6"
+                />
+                <span className="text-gray-700 font-medium">
+                  {selectedToken.name}
+                </span>
                 <div
                   className="relative"
-                  onMouseEnter={() => setShowLogoTooltip(true)}
-                  onMouseLeave={() => setShowLogoTooltip(false)}
+                  onMouseEnter={() => {
+                    if (tooltipTimeoutRef.current) {
+                      clearTimeout(tooltipTimeoutRef.current);
+                    }
+                    setShowLogoTooltip(true);
+                  }}
+                  onMouseLeave={() => {
+                    tooltipTimeoutRef.current = setTimeout(() => {
+                      setShowLogoTooltip(false);
+                    }, 800);
+                  }}
                 >
-                  <img
-                    src={selectedToken.logo}
-                    alt={selectedToken.name}
-                    className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform"
-                  />
-                  {/* EHive Logo Tooltip */}
+                  <span className="ml-1 text-[#597CE9] cursor-pointer hover:text-[#4A6CD4] transition-colors">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M12 16v-4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="12" cy="8" r="1" fill="currentColor" />
+                    </svg>
+                  </span>
+                  {/* EHive Info Tooltip */}
                   {showLogoTooltip && selectedToken.symbol === "EHIVE" && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-30 transition-all duration-150 ease-out">
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-30 transition-all duration-300 ease-out animate-in fade-in slide-in-from-bottom-2">
                       <div className="text-sm">
                         <div className="font-semibold text-gray-800 mb-2">
                           E-Hive EV Charger Network
@@ -230,30 +306,6 @@ export default function EmbeddableDemo() {
                     </div>
                   )}
                 </div>
-                <span className="text-gray-700 font-medium">
-                  {selectedToken.name}
-                </span>
-                <span
-                  className="ml-1 text-[#597CE9] cursor-pointer"
-                  title="About this asset"
-                >
-                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="#597CE9"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 16v-4"
-                      stroke="#597CE9"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <circle cx="12" cy="8" r="1" fill="#597CE9" />
-                  </svg>
-                </span>
               </div>
               {/* APY/Return info */}
               <div>
@@ -335,6 +387,182 @@ export default function EmbeddableDemo() {
           </div>
         </div>
 
+        {/* Investment Flow Simulation */}
+        {showInvestmentFlow && (
+          <div
+            className={`mt-8 mb-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-2 border-[#B6C5F5] transition-all duration-500 ease-out ${isFlowFadingOut ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-800">
+                Investment Progress
+              </h3>
+              <div className="text-sm text-gray-600">{investmentStep}/6</div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+              <div
+                className="bg-gradient-to-r from-[#597CE9] to-[#4A6CD4] h-2 rounded-full transition-all duration-500 ease-out"
+                style={{ width: `${(investmentStep / 6) * 100}%` }}
+              ></div>
+            </div>
+
+            {/* Step Content */}
+            <div className="space-y-3">
+              {investmentStep >= 1 && (
+                <div
+                  className={`flex items-center gap-3 ${investmentStep === 1 ? "text-[#597CE9]" : "text-green-600"}`}
+                >
+                  {investmentStep === 1 ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#597CE9] border-t-transparent"></div>
+                  ) : (
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                  <span className="font-medium">
+                    Verifying wallet connection
+                  </span>
+                </div>
+              )}
+
+              {investmentStep >= 2 && (
+                <div
+                  className={`flex items-center gap-3 ${investmentStep === 2 ? "text-[#597CE9]" : "text-green-600"}`}
+                >
+                  {investmentStep === 2 ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#597CE9] border-t-transparent"></div>
+                  ) : (
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                  <span className="font-medium">
+                    Preparing transaction for ${amount} USD
+                  </span>
+                </div>
+              )}
+
+              {investmentStep >= 3 && (
+                <div
+                  className={`flex items-center gap-3 ${investmentStep === 3 ? "text-[#597CE9]" : "text-green-600"}`}
+                >
+                  {investmentStep === 3 ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#597CE9] border-t-transparent"></div>
+                  ) : (
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                  <span className="font-medium">
+                    Interacting with {selectedToken.name} smart contract
+                  </span>
+                </div>
+              )}
+
+              {investmentStep >= 4 && (
+                <div
+                  className={`flex items-center gap-3 ${investmentStep === 4 ? "text-[#597CE9]" : "text-green-600"}`}
+                >
+                  {investmentStep === 4 ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#597CE9] border-t-transparent"></div>
+                  ) : (
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                  <span className="font-medium">
+                    Allocating tokens to your portfolio
+                  </span>
+                </div>
+              )}
+
+              {investmentStep >= 5 && (
+                <div
+                  className={`flex items-center gap-3 ${investmentStep === 5 ? "text-[#597CE9]" : "text-green-600"}`}
+                >
+                  {investmentStep === 5 ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#597CE9] border-t-transparent"></div>
+                  ) : (
+                    <svg
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                  <span className="font-medium">
+                    Finalizing investment record
+                  </span>
+                </div>
+              )}
+
+              {investmentStep >= 6 && (
+                <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center gap-2 text-green-700 font-semibold mb-2">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Investment Successful!
+                  </div>
+                  <div className="text-sm text-green-600">
+                    You have successfully invested ${amount} in{" "}
+                    {selectedToken.name}. Expected annual return: $
+                    {(parseFloat(amount) * (selectedToken.apy / 100)).toFixed(
+                      2,
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Invest button */}
         <div className="mt-8">
           <Button
@@ -342,7 +570,11 @@ export default function EmbeddableDemo() {
             onClick={handleInvest}
             disabled={investing}
           >
-            {investing ? "Processing..." : success ? "Success!" : "Invest Now"}
+            {investing
+              ? "Processing Investment..."
+              : success
+                ? "Investment Complete!"
+                : "Invest Now"}
           </Button>
         </div>
       </div>

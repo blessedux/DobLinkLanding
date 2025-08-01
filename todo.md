@@ -29,17 +29,17 @@ Stack: Next.js + React + Tailwind
   - [X] Include a link to https://home.dobprotocol.com
 
 ### Simulated Investment Flow
-- [ ] On click of the "Invest Now" button:
-  - [ ] Trigger a simulation of what happens next
-  - [ ] Guide the user through the investment process visually
-  - [ ] Include dummy confirmation states or loading animations if needed
+- [X] On click of the "Invest Now" button:
+  - [X] Trigger a simulation of what happens next
+  - [X] Guide the user through the investment process visually
+  - [X] Include dummy confirmation states or loading animations if needed
 
 ---
 
 ## UI and Visual Enhancements
 
-- [ ] Add minimalist animated background behind main content
-- [ ] Ensure animation is lightweight and non-distracting
+- [X] Add minimalist animated background behind main content
+- [X] Ensure animation is lightweight and non-distracting
 
 ---
 
