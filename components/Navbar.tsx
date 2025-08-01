@@ -4,13 +4,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
   const [blurAmount, setBlurAmount] = useState(0);
 
   // Delay navbar appearance
@@ -59,7 +57,7 @@ const Navbar = () => {
             animate={{ opacity: 1, borderRadius: 0, width: "100vw", height: "100vh", top: 0, right: 0 }}
             exit={{ opacity: 0, borderRadius: "50%", width: "30px", height: "30px", top: "40px", right: "20px" }}
             transition={{ duration: 0.75, ease: [0.215, 0.61, 0.355, 1] }}
-            className="fixed bg-gradient-to-br from-indigo-900 to-purple-800 dark:from-gray-900 dark:to-gray-800 z-40"
+            className="fixed bg-gradient-to-br from-indigo-900 to-purple-800 z-40"
             style={{ 
               transformOrigin: "top right",
               boxShadow: "0 2px 30px 0 rgba(0,0,0,0.3)",
@@ -94,9 +92,7 @@ const Navbar = () => {
             className="relative px-5 py-0 overflow-visible w-full"
             style={{
               backdropFilter: `blur(${blurAmount}px)`,
-              backgroundColor: isScrolled 
-                ? theme === 'dark' ? 'rgba(17, 24, 39, 0.8)' : 'rgba(255, 255, 255, 0.7)' 
-                : 'transparent',
+              backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.7)' : 'transparent',
               boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' : 'none',
               transition: `backdrop-filter 0.5s ease-in-out, 
                           background-color 0.5s ease-in-out, 
@@ -105,28 +101,22 @@ const Navbar = () => {
           >
             {/* Main navbar content */}
             <div className="flex justify-between items-center h-16 relative w-full">
-              {/* Logo - Now part of the navbar */}
+              {/* Logo */}
               <div className="flex-shrink-0">
-                <button 
-                  className="focus:outline-none relative"
-                  onClick={toggleTheme}
-                  aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                >
-                  <Image 
-                    src="/dob_imagotipo.svg" 
-                    alt="DOB Protocol" 
-                    width={320} 
-                    height={320} 
-                    className="cursor-pointer h-24 w-auto"
-                  />
-                </button>
+                <Image 
+                  src="/dob_imagotipo.svg" 
+                  alt="DOB Protocol" 
+                  width={320} 
+                  height={320} 
+                  className="h-24 w-auto"
+                />
               </div>
 
               {/* Hamburger Menu Button */}
               <div className="md:hidden ml-20 flex items-center justify-center z-50">
                 <button 
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className={`p-2 rounded-full ${mobileMenuOpen ? 'bg-white bg-opacity-10 text-white' : 'dark:text-gray-300 text-gray-700 hover:text-gray-900 dark:hover:text-white'}`}
+                  className={`p-2 rounded-full ${mobileMenuOpen ? 'bg-white bg-opacity-10 text-white' : 'text-gray-700 hover:text-gray-900'}`}
                   aria-label="Toggle mobile menu"
                 >
                   {mobileMenuOpen ? (
@@ -165,7 +155,7 @@ const Navbar = () => {
               <div className="hidden md:flex items-center justify-end flex-1 ml-6 space-x-4">
                 {/* DOB Dropdown */}
                 <div className="relative group">
-                  <button className="flex items-center space-x-1 dark:text-gray-300 text-gray-700 hover:text-[#597CE9] dark:hover:text-white font-medium px-3 py-1.5">
+                  <button className="flex items-center space-x-1 text-gray-700 hover:text-[#597CE9] font-medium px-3 py-1.5">
                     <span>DOB</span>
                     <svg
                       className="w-4 h-4"
@@ -177,14 +167,14 @@ const Navbar = () => {
                     </svg>
                   </button>
                   <div className="absolute left-0 pt-2 w-48 hidden group-hover:block z-50">
-                    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg py-1">
+                    <div className="bg-white border border-gray-200 rounded-md shadow-lg py-1">
                       {dobDropdownItems.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           target={item.target}
                           rel={item.target === '_blank' ? "noopener noreferrer" : undefined}
-                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-[#597CE9] hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:text-[#597CE9] transition-colors duration-200"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:text-[#597CE9] hover:bg-gray-50 transition-colors duration-200"
                         >
                           {item.label}
                         </Link>
@@ -195,7 +185,7 @@ const Navbar = () => {
 
                 {/* DOBI Dropdown */}
                 <div className="relative group">
-                  <button className="flex items-center space-x-1 dark:text-gray-300 text-gray-700 hover:text-[#597CE9] dark:hover:text-white font-medium px-3 py-1.5">
+                  <button className="flex items-center space-x-1 text-gray-700 hover:text-[#597CE9] font-medium px-3 py-1.5">
                     <span>DOBI</span>
                     <svg
                       className="w-4 h-4"
@@ -207,14 +197,14 @@ const Navbar = () => {
                     </svg>
                   </button>
                   <div className="absolute left-0 pt-2 w-48 hidden group-hover:block z-50">
-                    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg py-1">
+                    <div className="bg-white border border-gray-200 rounded-md shadow-lg py-1">
                       {dobiDropdownItems.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           target={item.target}
                           rel={item.target === '_blank' ? "noopener noreferrer" : undefined}
-                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-[#597CE9] hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:text-[#597CE9] transition-colors duration-200"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:text-[#597CE9] hover:bg-gray-50 transition-colors duration-200"
                         >
                           {item.label}
                         </Link>
@@ -226,14 +216,14 @@ const Navbar = () => {
                 {/* Regular Links */}
                 <Link
                   href="https://dobprotocol.notion.site/Dobprotocol-FAQ-17beffc346f180f995f2e1a15c62bf46"
-                  className="block text-gray-700 dark:text-gray-300 font-medium hover:text-[#597CE9] dark:hover:text-white transition-colors text-base px-3 py-1.5"
+                  className="block text-gray-700 font-medium hover:text-[#597CE9] transition-colors text-base px-3 py-1.5"
                 >
                   FAQ
                 </Link>
                 
                 <Link
                   href="https://wiki.dobprotocol.com"
-                  className="block text-gray-700 dark:text-gray-300 font-medium hover:text-[#597CE9] dark:hover:text-white transition-colors text-base px-3 py-1.5"
+                  className="block text-gray-700 font-medium hover:text-[#597CE9] transition-colors text-base px-3 py-1.5"
                 >
                   Wiki
                 </Link>
@@ -269,7 +259,7 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -15 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="text-sm font-medium text-indigo-300 dark:text-indigo-300 uppercase tracking-wider px-4 mb-3"
+                    className="text-sm font-medium text-indigo-300 uppercase tracking-wider px-4 mb-3"
                   >
                     DOB
                   </motion.p>
@@ -285,7 +275,7 @@ const Navbar = () => {
                           href={item.href}
                           target={item.target}
                           rel={item.target === '_blank' ? "noopener noreferrer" : undefined}
-                          className="block px-4 py-2.5 text-lg text-white dark:text-white hover:text-[#597CE9] dark:hover:text-[#597CE9] font-medium"
+                          className="block px-4 py-2.5 text-lg text-white hover:text-[#597CE9] font-medium"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.label}
@@ -301,7 +291,7 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -15 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 1.1 }}
-                    className="text-sm font-medium text-indigo-300 dark:text-indigo-300 uppercase tracking-wider px-4 mb-3"
+                    className="text-sm font-medium text-indigo-300 uppercase tracking-wider px-4 mb-3"
                   >
                     DOBI
                   </motion.p>
@@ -317,7 +307,7 @@ const Navbar = () => {
                           href={item.href}
                           target={item.target}
                           rel={item.target === '_blank' ? "noopener noreferrer" : undefined}
-                          className="block px-4 py-2.5 text-lg text-white dark:text-white hover:text-[#597CE9] dark:hover:text-[#597CE9] font-medium"
+                          className="block px-4 py-2.5 text-lg text-white hover:text-[#597CE9] font-medium"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.label}
@@ -336,7 +326,7 @@ const Navbar = () => {
                   >
                     <Link
                       href="https://dobprotocol.notion.site/Dobprotocol-FAQ-17beffc346f180f995f2e1a15c62bf46"
-                      className="block py-2.5 text-lg text-white dark:text-white font-medium hover:text-[#597CE9] dark:hover:text-[#597CE9]"
+                      className="block py-2.5 text-lg text-white font-medium hover:text-[#597CE9]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       FAQ
@@ -350,7 +340,7 @@ const Navbar = () => {
                   >
                     <Link
                       href="https://wiki.dobprotocol.com"
-                      className="block py-2.5 text-lg text-white dark:text-white font-medium hover:text-[#597CE9] dark:hover:text-[#597CE9]"
+                      className="block py-2.5 text-lg text-white font-medium hover:text-[#597CE9]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Wiki
@@ -362,72 +352,6 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <style jsx>{`
-        .gradient-button-wrapper {
-          position: relative;
-          display: inline-block;
-          padding: 2px;
-          border-radius: 9999px;
-          background: linear-gradient(90deg, #4F46E5 0%, #8B5CF6 30%, #EC4899 68%, #3B82F6 100%);
-          background-size: 300% 300%;
-          animation: AnimateBorder 4s ease infinite;
-          min-width: 120px;
-          max-width: 120px;
-        }
-        
-        .gradient-button {
-          display: inline-flex;
-          position: relative;
-          z-index: 1;
-          font-weight: 600;
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-          padding: 0.625rem 1.5rem;
-          border-radius: 9999px !important;
-          cursor: pointer;
-          text-decoration: none;
-          overflow: hidden;
-          transition: all 0.3s ease;
-          width: 100%;
-          justify-content: center;
-          background: #597CE9;
-          height: 2.5rem;
-          align-items: center;
-        }
-
-        .gradient-button-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: calc(100% + 4px);
-          height: calc(100% + 4px);
-          background: linear-gradient(90deg, #4F46E5 0%, #8B5CF6 30%, #EC4899 68%, #3B82F6 100%);
-          background-size: 300% 300%;
-          border-radius: 9999px !important;
-          animation: AnimateBorder 4s ease infinite;
-          z-index: 0;
-          transform: translate(-2px, -2px);
-          transition: filter 0.5s ease;
-          opacity: 0;
-        }
-
-        .gradient-button-wrapper:hover .gradient-button-bg {
-          filter: blur(6px);
-          opacity: 1;
-        }
-
-        .gradient-button-wrapper:hover .gradient-button {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.5);
-        }
-        
-        @keyframes AnimateBorder {
-          0% { background-position: 0% 50% }
-          50% { background-position: 100% 50% }
-          100% { background-position: 0% 50% }
-        }
-      `}</style>
     </>
   );
 };
