@@ -9,24 +9,24 @@ Stack: Next.js + React + Tailwind
 ## Core Widget Adjustments
 
 ### Clean Up Top UI (Inside Widget)
-- [ ] Remove the following elements inside the widget:
-  - [ ] “Connect Wallet” button (top right)
-  - [ ] “Invest in DePIN” title (top center)
-- [ ] Keep only:
-  - [ ] The "Invest Now" CTA button
-  - [ ] The three main input boxes (token selection, USD amount, output)
+- [X] Remove the following elements inside the widget:
+  - [X] “Connect Wallet” button (top right)
+  - [X] “Invest in DePIN” title (top center)
+- [X] Keep only:
+  - [X] The "Invest Now" CTA button
+  - [X] The three main input boxes (token selection, USD amount, output)
 
 ### UI Styling
-- [ ] Replace default browser dropdown on "Invest in Token" with a Tailwind-styled custom component
-- [ ] Ensure dropdown matches overall visual style of the widget
+- [X] Replace default browser dropdown on "Invest in Token" with a Tailwind-styled custom component
+- [X] Ensure dropdown matches overall visual style of the widget
 
 ### Tooltip Functionality
-- [ ] On hover of the "API" section tooltip:
-  - [ ] Display distribution frequency
-  - [ ] Include information on any related fees
-- [ ] On hover of the EHive EV Charger logo tooltip:
-  - [ ] Show relevant hover content
-  - [ ] Include a link to https://home.dobprotocol.com
+- [X] On hover of the "API" section tooltip:
+  - [X] Display distribution frequency
+  - [X] Include information on any related fees
+- [X] On hover of the EHive EV Charger logo tooltip:
+  - [X] Show relevant hover content
+  - [X] Include a link to https://home.dobprotocol.com
 
 ### Simulated Investment Flow
 - [ ] On click of the "Invest Now" button:
