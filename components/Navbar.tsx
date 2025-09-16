@@ -36,16 +36,18 @@ const Navbar = () => {
   }, []);
 
   const dobDropdownItems = [
-    { label: 'Buy $DOB', href: 'https://presale.dobprotocol.com/', target: '_blank' },
-    { label: 'Tokenomics', href: 'https://dobprotocol.notion.site/DOB-Tokenomics-Roadmap-17beffc346f181959c10c001070ba64a', target: '_blank' },
     { label: 'Roadmap', href: 'https://dobprotocol.notion.site/Dobprotocol-Roadmap-17beffc346f18122affcefebb73fa03c', target: '_blank' },
-    { label: 'White Paper', href: 'https://drive.google.com/file/d/1PWjl_nYhb0cx4ewhcfgiKe7EP-qLHkWV/view', target: '_blank' },
+    { label: 'Team', href: 'https://dobprotocol.notion.site/Team-17beffc346f18122affcefebb73fa03c', target: '_blank' },
+    { label: 'Validator', href: 'https://dobprotocol.notion.site/Dob-Validator-17beffc346f18122affcefebb73fa03c', target: '_blank' },
+    { label: 'Tokenize', href: 'https://dobprotocol.notion.site/Tokenize-17beffc346f18122affcefebb73fa03c', target: '_blank' },
   ];
 
-  const dobiDropdownItems = [
-    { label: 'Buy $DOBI', href: 'https://app.virtuals.io/virtuals/13315', target: '_blank' },
-    { label: 'AI Agent Workflow', href: 'https://dobi.agents.dobprotocol.com/', target: '_blank' },
+  const docsDropdownItems = [
+    { label: 'FAQ', href: 'https://dobprotocol.notion.site/Dobprotocol-FAQ-17beffc346f180f995f2e1a15c62bf46', target: '_blank' },
+    { label: 'Wiki', href: 'https://wiki.dobprotocol.com', target: '_blank' },
+    { label: 'Blog', href: 'https://dobprotocol.notion.site/Blog-17beffc346f18122affcefebb73fa03c', target: '_blank' },
   ];
+
 
   return (
     <>
@@ -183,10 +185,11 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                {/* DOBI Dropdown */}
+
+                {/* Docs Dropdown */}
                 <div className="relative group">
                   <button className="flex items-center space-x-1 text-gray-700 hover:text-[#597CE9] font-medium px-3 py-1.5">
-                    <span>DOBI</span>
+                    <span>Docs</span>
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -198,7 +201,7 @@ const Navbar = () => {
                   </button>
                   <div className="absolute left-0 pt-2 w-48 hidden group-hover:block z-50">
                     <div className="bg-white border border-gray-200 rounded-md shadow-lg py-1">
-                      {dobiDropdownItems.map((item) => (
+                      {docsDropdownItems.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
@@ -212,21 +215,6 @@ const Navbar = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Regular Links */}
-                <Link
-                  href="https://dobprotocol.notion.site/Dobprotocol-FAQ-17beffc346f180f995f2e1a15c62bf46"
-                  className="block text-gray-700 font-medium hover:text-[#597CE9] transition-colors text-base px-3 py-1.5"
-                >
-                  FAQ
-                </Link>
-                
-                <Link
-                  href="https://wiki.dobprotocol.com"
-                  className="block text-gray-700 font-medium hover:text-[#597CE9] transition-colors text-base px-3 py-1.5"
-                >
-                  Wiki
-                </Link>
               </div>
 
               {/* Empty space for mobile menu button - Placeholder only */}
@@ -285,29 +273,30 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                {/* DOBI Section */}
+
+                {/* Docs Section */}
                 <div>
-                  <motion.p
+                  <motion.p 
                     initial={{ opacity: 0, x: -15 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 1.1 }}
+                    transition={{ duration: 0.5, delay: 1.4 }}
                     className="text-sm font-medium text-indigo-300 uppercase tracking-wider px-4 mb-3"
                   >
-                    DOBI
+                    Docs
                   </motion.p>
                   <div className="mt-2 space-y-2">
-                    {dobiDropdownItems.map((item, index) => (
+                    {docsDropdownItems.map((item, index) => (
                       <motion.div
                         key={item.href}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 1.2 + (index * 0.1) }}
+                        initial={{ opacity: 0, x: -15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 1.5 + index * 0.1 }}
                       >
                         <Link
                           href={item.href}
                           target={item.target}
                           rel={item.target === '_blank' ? "noopener noreferrer" : undefined}
-                          className="block px-4 py-2.5 text-lg text-white hover:text-[#597CE9] font-medium"
+                          className="block py-2.5 text-lg text-white font-medium hover:text-[#597CE9] px-4"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.label}
@@ -315,37 +304,6 @@ const Navbar = () => {
                       </motion.div>
                     ))}
                   </div>
-                </div>
-
-                {/* Regular Links */}
-                <div className="space-y-3 px-4">
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.4 }}
-                  >
-                    <Link
-                      href="https://dobprotocol.notion.site/Dobprotocol-FAQ-17beffc346f180f995f2e1a15c62bf46"
-                      className="block py-2.5 text-lg text-white font-medium hover:text-[#597CE9]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      FAQ
-                    </Link>
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.5 }}
-                  >
-                    <Link
-                      href="https://wiki.dobprotocol.com"
-                      className="block py-2.5 text-lg text-white font-medium hover:text-[#597CE9]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Wiki
-                    </Link>
-                  </motion.div>
                 </div>
               </motion.div>
             </div>
