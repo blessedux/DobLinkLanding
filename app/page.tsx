@@ -75,6 +75,18 @@ export default function Home() {
                     <span>Direct client integration</span>
                   </li>
                 </ul>
+                <div className="pt-4">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="border-[#597CE9] text-[#597CE9] hover:bg-[#597CE9] hover:text-white"
+                    asChild
+                  >
+                    <Link href="https://trufa-gateway-kqbn.vercel.app/" target="_blank" rel="noopener noreferrer">
+                      Widget Manager Demo
+                    </Link>
+                  </Button>
+                </div>
               </div>
               <div className="border rounded-xl shadow-lg p-6 bg-white">
                 <EmbeddableDemo />
