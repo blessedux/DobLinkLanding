@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Wallet, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { ResponsiveTooltip } from "@/components/ui/responsive-tooltip";
 
 // Mock token data
 const TOKENS = [
@@ -240,41 +241,13 @@ export default function EmbeddableDemo() {
                 <span className="text-gray-700 font-medium">
                   {selectedToken.name}
                 </span>
-                <div
-                  className="relative"
-                  onMouseEnter={() => {
-                    if (tooltipTimeoutRef.current) {
-                      clearTimeout(tooltipTimeoutRef.current);
-                    }
-                    setShowLogoTooltip(true);
-                  }}
-                  onMouseLeave={() => {
-                    tooltipTimeoutRef.current = setTimeout(() => {
-                      setShowLogoTooltip(false);
-                    }, 800);
-                  }}
-                >
-                  <span className="ml-1 text-[#597CE9] cursor-pointer hover:text-[#4A6CD4] transition-colors">
-                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      />
-                      <path
-                        d="M12 16v-4"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <circle cx="12" cy="8" r="1" fill="currentColor" />
-                    </svg>
-                  </span>
-                  {/* EHive Info Tooltip */}
-                  {showLogoTooltip && selectedToken.symbol === "EHIVE" && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-40 transition-all duration-300 ease-out">
+                <ResponsiveTooltip
+                  isOpen={showLogoTooltip && selectedToken.symbol === "EHIVE"}
+                  onOpenChange={setShowLogoTooltip}
+                  position="top"
+                  align="center"
+                  content={
+                    <div className="p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl">
                       <div className="text-sm">
                         <div className="font-semibold text-gray-800 mb-2">
                           E-Hive EV Charger Network
@@ -307,11 +280,46 @@ export default function EmbeddableDemo() {
                           </svg>
                         </a>
                       </div>
-                      {/* Tooltip arrow */}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-[#B6C5F5]"></div>
                     </div>
-                  )}
-                </div>
+                  }
+                >
+                  <span
+                    className="ml-1 text-[#597CE9] cursor-pointer hover:text-[#4A6CD4] transition-colors"
+                    onMouseEnter={() => {
+                      if (tooltipTimeoutRef.current) {
+                        clearTimeout(tooltipTimeoutRef.current);
+                      }
+                      setShowLogoTooltip(true);
+                    }}
+                    onMouseLeave={() => {
+                      tooltipTimeoutRef.current = setTimeout(() => {
+                        setShowLogoTooltip(false);
+                      }, 300);
+                    }}
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M12 16v-4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="12" cy="8" r="1" fill="currentColor" />
+                    </svg>
+                  </span>
+                </ResponsiveTooltip>
               </div>
               {/* APY/Return info */}
               <div>
@@ -319,7 +327,42 @@ export default function EmbeddableDemo() {
                   <span className="text-3xl font-bold text-gray-800">
                     {selectedToken.apy}%
                   </span>
-                  <div className="relative">
+                  <ResponsiveTooltip
+                    isOpen={showAPYTooltip}
+                    onOpenChange={setShowAPYTooltip}
+                    position="top"
+                    align="end"
+                    content={
+                      <div className="p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl">
+                        <div className="text-sm">
+                          <div className="font-semibold text-gray-800 mb-2">
+                            Annual Percentage Yield (APY)
+                          </div>
+                          <div className="space-y-2 text-gray-600">
+                            <div className="flex justify-between">
+                              <span>Distribution Frequency:</span>
+                              <span className="font-medium">Monthly</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span>Platform Fee:</span>
+                              <span className="font-medium">2.5%</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span>Network Fee:</span>
+                              <span className="font-medium">~$5-15</span>
+                            </div>
+                            <div className="pt-2 mt-2 border-t border-gray-200">
+                              <div className="text-xs text-gray-500">
+                                Yields are estimated based on historical
+                                performance and may vary. Fees are deducted from
+                                rewards.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  >
                     <span
                       className="ml-1 text-[#597CE9] cursor-pointer hover:text-[#4A6CD4] transition-colors"
                       onMouseEnter={() => setShowAPYTooltip(true)}
@@ -347,40 +390,7 @@ export default function EmbeddableDemo() {
                         <circle cx="12" cy="8" r="1" fill="currentColor" />
                       </svg>
                     </span>
-                    {/* APY Tooltip */}
-                    {showAPYTooltip && (
-                      <div className="absolute bottom-full right-0 mb-2 w-72 p-4 bg-white border-2 border-[#B6C5F5] rounded-xl shadow-2xl z-40 transition-all duration-150 ease-out">
-                        <div className="text-sm">
-                          <div className="font-semibold text-gray-800 mb-2">
-                            Annual Percentage Yield (APY)
-                          </div>
-                          <div className="space-y-2 text-gray-600">
-                            <div className="flex justify-between">
-                              <span>Distribution Frequency:</span>
-                              <span className="font-medium">Monthly</span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span>Platform Fee:</span>
-                              <span className="font-medium">2.5%</span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span>Network Fee:</span>
-                              <span className="font-medium">~$5-15</span>
-                            </div>
-                            <div className="pt-2 mt-2 border-t border-gray-200">
-                              <div className="text-xs text-gray-500">
-                                Yields are estimated based on historical
-                                performance and may vary. Fees are deducted from
-                                rewards.
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        {/* Tooltip arrow */}
-                        <div className="absolute top-full right-4 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-[#B6C5F5]"></div>
-                      </div>
-                    )}
-                  </div>
+                  </ResponsiveTooltip>
                 </div>
                 <div className="text-gray-400 text-sm">APY</div>
                 <div className="text-lg font-medium text-gray-700 mt-2">

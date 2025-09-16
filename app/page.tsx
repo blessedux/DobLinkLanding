@@ -24,15 +24,21 @@ export default function Home() {
               <Button
                 size="lg"
                 className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white"
+                asChild
               >
-                Start Integrating <ArrowRight className="h-4 w-4" />
+                <Link href="https://trufa-gateway.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  Start Integrating <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-black text-black hover:bg-black hover:text-white bg-white"
+                asChild
               >
-                View Documentation
+                <Link href="https://dobprotocol-1.gitbook.io/dobprotocol-wiki/dob-index/overview" target="_blank" rel="noopener noreferrer">
+                  View Documentation
+                </Link>
               </Button>
             </div>
           </div>
@@ -223,15 +229,21 @@ export default function Home() {
               <Button
                 size="lg"
                 className="gap-2 bg-[#597CE9] hover:bg-[#4A6CD4] text-white"
+                asChild
               >
-                Get Started <ArrowRight className="h-4 w-4" />
+                <Link href="https://trufa-gateway.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  Get Started <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-black text-black hover:bg-black hover:text-white bg-white"
+                asChild
               >
-                Contact Sales
+                <Link href="https://dobprotocol-1.gitbook.io/dobprotocol-wiki/dob-index/overview" target="_blank" rel="noopener noreferrer">
+                  Contact Sales
+                </Link>
               </Button>
             </div>
           </div>
